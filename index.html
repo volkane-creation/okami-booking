@@ -17,135 +17,202 @@
 --bor:rgba(255,255,255,0.08);--bor2:rgba(255,255,255,0.14);
 --txt:#F5F5F5;--txt2:#A0A0A0;--txt3:#5A5A5A;
 --ok:#1DB954;--ok2:#0D7A35;--am:#E6A817;--am2:#7A5500;
+--offer-color:#C084FC;
 }
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;font-size:14px}
-.topbar{background:var(--bg2);border-bottom:1px solid var(--bor);padding:0 20px;display:flex;align-items:center;height:52px;gap:16px;position:sticky;top:0;z-index:100}
-.logo-txt{font-size:15px;font-weight:500;color:#fff;letter-spacing:0.06em}
-.logo-sub{font-size:10px;color:var(--txt3);letter-spacing:0.15em;text-transform:uppercase}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;font-size:14px;overflow:hidden}
+
+/* TOPBAR */
+.topbar{background:var(--bg2);border-bottom:1px solid var(--bor);padding:0 16px;display:flex;align-items:center;height:52px;gap:12px;position:sticky;top:0;z-index:100;overflow-x:auto;flex-shrink:0}
+.topbar::-webkit-scrollbar{height:3px}
+.topbar::-webkit-scrollbar-thumb{background:var(--bor2);border-radius:2px}
+.logo-wrap{flex-shrink:0}
+.logo-txt{font-size:14px;font-weight:500;color:#fff;letter-spacing:0.06em;white-space:nowrap}
+.logo-sub{font-size:9px;color:var(--txt3);letter-spacing:0.15em;text-transform:uppercase}
 .top-sep{width:1px;height:28px;background:var(--bor2);flex-shrink:0}
-.kpi-row{display:flex;gap:6px;flex:1;flex-wrap:wrap}
-.kpi{display:flex;align-items:center;gap:6px;padding:4px 11px;background:var(--sur);border:1px solid var(--bor);border-radius:20px;font-size:12px;color:var(--txt2);white-space:nowrap}
+.kpi-row{display:flex;gap:5px;flex-shrink:0}
+.kpi{display:flex;align-items:center;gap:5px;padding:3px 10px;background:var(--sur);border:1px solid var(--bor);border-radius:20px;font-size:11px;color:var(--txt2);white-space:nowrap;flex-shrink:0}
 .kpi strong{color:var(--txt);font-weight:500}
 .kdot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
-.dok{background:var(--ok)}.dam{background:var(--am)}.dre{background:var(--r2)}.dof{background:var(--gold)}
-.layout{display:grid;grid-template-columns:204px 1fr;height:calc(100vh - 52px)}
-.sidebar{background:var(--bg2);border-right:1px solid var(--bor);padding:12px 0;overflow-y:auto}
-.sb-sec{padding:4px 10px 12px}
-.sb-lbl{font-size:9px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--txt3);padding:0 8px;margin-bottom:6px}
-.sb-btn{width:100%;background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:7px;font-size:12px;color:var(--txt2);display:flex;align-items:center;gap:8px;transition:all 0.12s;text-align:left;font-family:'DM Sans',sans-serif}
+.dok{background:var(--ok)}.dam{background:var(--am)}.dre{background:var(--r2)}.dof{background:var(--gold)}.doff2{background:var(--offer-color)}
+
+/* LAYOUT */
+.layout{display:flex;height:calc(100vh - 52px);overflow:hidden}
+.sidebar{background:var(--bg2);border-right:1px solid var(--bor);padding:10px 0;overflow-y:auto;width:200px;flex-shrink:0}
+.main{flex:1;overflow-y:auto;padding:16px 20px;min-width:0}
+
+/* SIDEBAR */
+.sb-sec{padding:3px 10px 10px}
+.sb-lbl{font-size:9px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--txt3);padding:0 8px;margin-bottom:5px}
+.sb-btn{width:100%;background:none;border:none;cursor:pointer;padding:5px 10px;border-radius:7px;font-size:12px;color:var(--txt2);display:flex;align-items:center;gap:7px;transition:all 0.12s;text-align:left;font-family:'DM Sans',sans-serif}
 .sb-btn:hover{background:var(--sur2);color:var(--txt)}
 .sb-btn.active{background:var(--r3);color:#fff;font-weight:500}
 .sb-btn .cnt{margin-left:auto;font-size:10px;background:var(--sur3);border-radius:8px;padding:1px 6px;color:var(--txt3)}
 .sb-btn.active .cnt{background:var(--r);color:#fff}
-.sb-total{margin:0 10px 12px;background:rgba(192,57,43,0.1);border:1px solid rgba(192,57,43,0.25);border-radius:8px;padding:10px 12px}
+.sb-total{margin:0 10px 10px;border-radius:8px;padding:10px 12px}
+.sb-total.budget-paid{background:rgba(192,57,43,0.1);border:1px solid rgba(192,57,43,0.25)}
+.sb-total.budget-offered{background:rgba(192,132,252,0.08);border:1px solid rgba(192,132,252,0.25);margin-top:0}
 .sb-total-lbl{font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:var(--txt3);margin-bottom:2px}
-.sb-total-val{font-size:18px;font-weight:500;color:var(--r2)}
-.search-box{padding:10px}
+.sb-total-val{font-size:16px;font-weight:500}
+.sb-total.budget-paid .sb-total-val{color:var(--r2)}
+.sb-total.budget-offered .sb-total-val{color:var(--offer-color)}
+.search-box{padding:8px 10px}
 .sw{position:relative}
-.sw i{position:absolute;left:9px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--txt3)}
-.si{width:100%;background:var(--sur);border:1px solid var(--bor);border-radius:8px;padding:7px 10px 7px 32px;font-size:12px;color:var(--txt);outline:none;font-family:'DM Sans',sans-serif;transition:border-color 0.15s}
+.sw i{position:absolute;left:9px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--txt3)}
+.si{width:100%;background:var(--sur);border:1px solid var(--bor);border-radius:8px;padding:6px 10px 6px 30px;font-size:12px;color:var(--txt);outline:none;font-family:'DM Sans',sans-serif;transition:border-color 0.15s}
 .si::placeholder{color:var(--txt3)}
 .si:focus{border-color:var(--r)}
-.leg-row{display:flex;justify-content:space-between;align-items:center;font-size:11px;padding:3px 6px}
-.leg-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-right:5px;display:inline-block}
-.main{overflow-y:auto;padding:16px 20px}
+.leg-row{display:flex;justify-content:space-between;align-items:center;font-size:11px;padding:2px 6px}
+.leg-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-right:4px;display:inline-block}
+
+/* TABLE — responsive via flex column on small screens */
 .day-block{margin-bottom:24px}
-.day-hdr{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.day-name{font-size:16px;font-weight:500;color:#fff}
+.day-hdr{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.day-name{font-size:15px;font-weight:500;color:#fff;white-space:nowrap}
 .day-line{flex:1;height:1px;background:var(--bor)}
-.day-cnt{font-size:11px;color:var(--txt3);background:var(--sur);padding:2px 8px;border-radius:10px;border:1px solid var(--bor)}
-.scene-block{margin-bottom:14px}
-.scene-hdr{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.day-cnt{font-size:11px;color:var(--txt3);background:var(--sur);padding:2px 8px;border-radius:10px;border:1px solid var(--bor);white-space:nowrap}
+.scene-block{margin-bottom:12px}
+.scene-hdr{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
 .sc-badge{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:500}
 .sc-badge-d{background:rgba(192,57,43,0.15);color:#E57373;border:1px solid rgba(192,57,43,0.3)}
 .sc-badge-s{background:rgba(24,95,165,0.2);color:#5A9AE0;border:1px solid rgba(24,95,165,0.4)}
-.tbl{background:var(--sur);border:1px solid var(--bor);border-radius:10px;overflow:hidden}
-.tbl-head{display:grid;grid-template-columns:78px 56px 1fr 115px 160px 78px;background:var(--bg3);border-bottom:1px solid var(--bor);padding:0 12px}
+.tbl{background:var(--sur);border:1px solid var(--bor);border-radius:10px;overflow:hidden;width:100%}
+
+/* RESPONSIVE TABLE */
+.tbl-head{display:grid;grid-template-columns:82px 60px 1fr 130px 170px 90px;background:var(--bg3);border-bottom:1px solid var(--bor);padding:0 12px}
+.arow{display:grid;grid-template-columns:82px 60px 1fr 130px 170px 90px;padding:0 12px;border-bottom:1px solid var(--bor);align-items:center;min-height:52px;transition:background 0.1s}
+@media (max-width:1100px){
+  .tbl-head{grid-template-columns:76px 52px 1fr 120px 150px 80px}
+  .arow{grid-template-columns:76px 52px 1fr 120px 150px 80px}
+}
+@media (max-width:900px){
+  .tbl-head{grid-template-columns:72px 50px 1fr 110px 130px 70px}
+  .arow{grid-template-columns:72px 50px 1fr 110px 130px 70px}
+  .th,.cell{padding:4px}
+}
+@media (max-width:750px){
+  .sidebar{width:170px}
+  .tbl-head{grid-template-columns:65px 46px 1fr 100px 120px 64px}
+  .arow{grid-template-columns:65px 46px 1fr 100px 120px 64px}
+  .kpi{font-size:10px;padding:3px 8px}
+}
 .th{padding:8px 6px;font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--txt3)}
-.arow{display:grid;grid-template-columns:78px 56px 1fr 115px 160px 78px;padding:0 12px;border-bottom:1px solid var(--bor);align-items:center;min-height:50px;transition:background 0.1s}
 .arow:last-child{border-bottom:none}
 .arow:hover{background:var(--sur2)}
 .arow.sv{border-left:2px solid var(--ok)}
 .arow.sj{border-left:2px solid var(--r2);opacity:0.5}
 .arow.sp{border-left:2px solid var(--am)}
 .arow.so{border-left:2px solid var(--gold)}
-.cell{padding:6px}
-.tc{font-size:11px;color:var(--txt2);font-variant-numeric:tabular-nums}
-.spill{font-size:10px;padding:2px 7px;border-radius:8px;font-weight:500;display:inline-block}
+.cell{padding:5px 6px;min-width:0}
+.tc{font-size:11px;color:var(--txt2);font-variant-numeric:tabular-nums;line-height:1.3}
+.spill{font-size:10px;padding:2px 6px;border-radius:8px;font-weight:500;display:inline-block;white-space:nowrap}
 .sp-d{background:rgba(192,57,43,0.12);color:#E57373;border:1px solid rgba(192,57,43,0.25)}
 .sp-s{background:rgba(24,95,165,0.15);color:#5A9AE0;border:1px solid rgba(24,95,165,0.3)}
-.aname{font-size:13px;font-weight:500;color:#fff;cursor:pointer}
+.aname{font-size:13px;font-weight:500;color:#fff;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .aname:hover{color:var(--r2)}
-.acontact{font-size:10px;color:var(--txt3);margin-top:1px}
+.acontact{font-size:10px;color:var(--txt3);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .aemail{color:rgba(201,153,42,0.7);text-decoration:none;font-size:10px}
 .aemail:hover{color:var(--gold2)}
-.anote{font-size:10px;color:var(--txt3);margin-top:2px;font-style:italic}
-.stsel{background:var(--sur3);border:1px solid var(--bor2);border-radius:7px;padding:4px 8px;font-size:11px;color:var(--txt2);cursor:pointer;outline:none;width:100%;font-family:'DM Sans',sans-serif;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%235A5A5A'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 6px center;padding-right:20px}
+.anote{font-size:10px;color:#4ade80;margin-top:2px;font-style:italic;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* Social links inline */
+.asocial{display:flex;gap:4px;margin-top:3px;flex-wrap:wrap}
+.asocial a{display:inline-flex;align-items:center;gap:3px;font-size:9px;padding:1px 6px;border-radius:8px;text-decoration:none;font-weight:500;transition:opacity 0.12s}
+.asocial a:hover{opacity:0.8}
+.soc-ig{background:rgba(225,48,108,0.15);color:#F06292;border:1px solid rgba(225,48,108,0.3)}
+.soc-fb{background:rgba(24,119,242,0.15);color:#64B5F6;border:1px solid rgba(24,119,242,0.3)}
+.soc-sc{background:rgba(255,85,0,0.15);color:#FF8A50;border:1px solid rgba(255,85,0,0.3)}
+
+/* STATUS SELECT */
+.stsel{background:var(--sur3);border:1px solid var(--bor2);border-radius:7px;padding:4px 6px;font-size:11px;color:var(--txt2);cursor:pointer;outline:none;width:100%;font-family:'DM Sans',sans-serif;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%235A5A5A'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 5px center;padding-right:18px}
 .stsel.cv{border-color:var(--ok2);color:var(--ok);background-color:rgba(29,185,84,0.06)}
 .stsel.cr{border-color:var(--r3);color:var(--r2);background-color:rgba(192,57,43,0.06)}
 .stsel.cp{border-color:var(--am2);color:var(--am);background-color:rgba(230,168,23,0.06)}
 .stsel.co{border-color:rgba(201,153,42,0.4);color:var(--gold2);background-color:rgba(201,153,42,0.06)}
-.fchosen-v{font-size:11px;font-weight:500;color:var(--r2);cursor:pointer}
-.fchosen-l{font-size:11px;font-weight:500;color:#5A9AE0;cursor:pointer}
-.fchosen-o{font-size:11px;font-weight:500;color:var(--gold2);cursor:pointer}
+
+/* FORMULE CELL */
+.fchosen-v{font-size:11px;font-weight:500;color:var(--r2);cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.fchosen-l{font-size:11px;font-weight:500;color:#5A9AE0;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.fchosen-o{font-size:11px;font-weight:500;color:var(--offer-color);cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
 .fnone{font-size:11px;color:var(--txt3);cursor:pointer}
-.fprice{font-size:12px;font-weight:500;color:var(--gold)}
-.fbtn{background:none;border:1px solid var(--bor2);color:var(--txt3);padding:4px 9px;border-radius:7px;cursor:pointer;font-size:10px;font-family:'DM Sans',sans-serif;transition:all 0.12s;white-space:nowrap}
+.fprice{font-size:11px;font-weight:500;color:var(--gold)}
+
+/* ACTION BUTTON — always visible, never clipped */
+.cell-action{padding:5px 6px;display:flex;align-items:center;justify-content:center}
+.fbtn{background:none;border:1px solid var(--bor2);color:var(--txt3);padding:4px 8px;border-radius:7px;cursor:pointer;font-size:10px;font-family:'DM Sans',sans-serif;transition:all 0.12s;white-space:nowrap;flex-shrink:0}
 .fbtn:hover{border-color:var(--r);color:#fff;background:rgba(192,57,43,0.15)}
+
 .empty{padding:40px;text-align:center;color:var(--txt3);font-size:13px}
+
+/* MODAL */
 .modal-bg{background:rgba(0,0,0,0.88);display:flex;align-items:center;justify-content:center;position:fixed;inset:0;z-index:200;opacity:0;pointer-events:none;transition:opacity 0.18s}
 .modal-bg.open{opacity:1;pointer-events:all}
-.modal{background:var(--bg2);border:1px solid var(--bor2);border-radius:14px;padding:24px;width:560px;max-width:94vw;transform:translateY(8px);transition:transform 0.18s;max-height:90vh;overflow-y:auto}
+.modal{background:var(--bg2);border:1px solid var(--bor2);border-radius:14px;padding:22px;width:580px;max-width:95vw;transform:translateY(8px);transition:transform 0.18s;max-height:92vh;overflow-y:auto}
 .modal-bg.open .modal{transform:translateY(0)}
-.modal-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
+.modal-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
 .modal-title{font-size:17px;font-weight:500;color:#fff}
 .modal-meta{font-size:11px;color:var(--txt3);margin-top:3px}
-.mcls{background:none;border:none;cursor:pointer;color:var(--txt3);font-size:20px;padding:0 4px;line-height:1;transition:color 0.1s}
+.mcls{background:none;border:none;cursor:pointer;color:var(--txt3);font-size:20px;padding:0 4px;line-height:1;transition:color 0.1s;flex-shrink:0}
 .mcls:hover{color:#fff}
-.irow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.irow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
 .ilbl{font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--txt3);margin-bottom:3px}
 .ival{font-size:13px;color:var(--txt);font-weight:500}
-.mdiv{border:none;border-top:1px solid var(--bor);margin:12px 0}
-.msub{font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--txt3);margin-bottom:10px}
+.mdiv{border:none;border-top:1px solid var(--bor);margin:10px 0}
+.msub{font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--txt3);margin-bottom:8px}
+
+/* Social inputs in modal */
+.soc-inputs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px}
+.soc-inp-wrap{position:relative}
+.soc-inp-wrap i{position:absolute;left:8px;top:50%;transform:translateY(-50%);font-size:13px}
+.soc-inp{width:100%;background:var(--sur3);border:1px solid var(--bor);border-radius:7px;padding:6px 8px 6px 28px;font-size:11px;color:var(--txt);font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.15s}
+.soc-inp::placeholder{color:var(--txt3)}
+.soc-inp:focus{border-color:var(--bor2)}
+.soc-inp.ig:focus{border-color:#F06292}
+.soc-inp.fb:focus{border-color:#64B5F6}
+.soc-inp.sc:focus{border-color:#FF8A50}
+
+/* Notes */
+.ni{width:100%;background:var(--sur3);border:1px solid var(--bor);border-radius:7px;padding:6px 9px;font-size:11px;color:#4ade80;font-family:'DM Sans',sans-serif;outline:none;resize:none;height:38px;transition:border-color 0.15s}
+.ni:focus{border-color:#4ade80;height:60px}
+.ni::placeholder{color:var(--txt3)}
+
+/* Formule cards */
 .fcards-grid{display:grid;gap:8px;margin-bottom:8px}
 .g3{grid-template-columns:repeat(3,1fr)}
 .g4{grid-template-columns:repeat(4,1fr)}
-.fcard{background:var(--sur3);border:1px solid var(--bor);border-radius:9px;padding:11px 8px;cursor:pointer;transition:all 0.12s;text-align:center}
+.fcard{background:var(--sur3);border:1px solid var(--bor);border-radius:9px;padding:10px 8px;cursor:pointer;transition:all 0.12s;text-align:center}
 .fcard:hover{border-color:var(--bor2);background:var(--sur2)}
 .fcard.sd{border-color:var(--r);background:rgba(192,57,43,0.12)}
 .fcard.sl{border-color:var(--blue2);background:rgba(24,95,165,0.12)}
-.fcard.sof{border-color:var(--gold);background:rgba(201,153,42,0.1)}
+.fcard.sof{border-color:var(--offer-color);background:rgba(192,132,252,0.08)}
 .fc-team{font-size:8px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--txt3);margin-bottom:3px}
-.fc-name{font-size:10px;font-weight:500;color:var(--txt2);margin-bottom:4px}
+.fc-name{font-size:10px;font-weight:500;color:var(--txt2);margin-bottom:3px}
 .fcard.sd .fc-name{color:#E57373}
 .fcard.sl .fc-name{color:#5A9AE0}
-.fcard.sof .fc-name{color:var(--gold2)}
-.fc-p{font-size:19px;font-weight:500;color:#fff;margin-bottom:3px}
+.fcard.sof .fc-name{color:var(--offer-color)}
+.fc-p{font-size:18px;font-weight:500;color:#fff;margin-bottom:3px}
 .fcard.sd .fc-p{color:var(--r2)}
 .fcard.sl .fc-p{color:#5A9AE0}
-.fcard.sof .fc-p{color:var(--gold2)}
+.fcard.sof .fc-p{color:var(--offer-color)}
 .fc-d{font-size:9px;color:var(--txt3);line-height:1.5}
-.ni{width:100%;background:var(--sur3);border:1px solid var(--bor);border-radius:7px;padding:6px 9px;font-size:11px;color:var(--txt);font-family:'DM Sans',sans-serif;outline:none;resize:none;height:38px;transition:border-color 0.15s}
-.ni:focus{border-color:var(--r);height:60px}
-.mact{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
-.bsec{background:none;border:1px solid var(--bor2);color:var(--txt2);padding:7px 18px;border-radius:8px;cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif}
-.bpri{background:var(--r);border:1px solid var(--r);color:#fff;padding:7px 18px;border-radius:8px;cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif;font-weight:500}
+.mact{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
+.bsec{background:none;border:1px solid var(--bor2);color:var(--txt2);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif}
+.bpri{background:var(--r);border:1px solid var(--r);color:#fff;padding:7px 16px;border-radius:8px;cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif;font-weight:500}
 .bpri:hover{background:var(--r2)}
 </style>
 </head>
 <body>
 
 <div class="topbar">
-  <div><div class="logo-txt">OKAMI 2026</div><div class="logo-sub">Booking & Vidéo</div></div>
+  <div class="logo-wrap"><div class="logo-txt">OKAMI 2026</div><div class="logo-sub">Booking & Vidéo</div></div>
   <div class="top-sep"></div>
   <div class="kpi-row">
     <div class="kpi"><span class="kdot dok"></span>Validés <strong id="k-ok">0</strong></div>
     <div class="kpi"><span class="kdot dam"></span>En attente <strong id="k-pend">0</strong></div>
     <div class="kpi"><span class="kdot dre"></span>Refusés <strong id="k-rej">0</strong></div>
     <div class="kpi"><span class="kdot dof"></span>Offertes <strong id="k-off">0</strong></div>
-    <div class="kpi" style="border-color:rgba(192,57,43,0.4)"><i class="ti ti-video" style="font-size:12px;color:var(--r2)"></i>Volkane <strong id="k-bv" style="color:var(--r2)">0 €</strong></div>
-    <div class="kpi" style="border-color:rgba(24,95,165,0.4)"><i class="ti ti-video" style="font-size:12px;color:#5A9AE0"></i>Lauptike <strong id="k-bl" style="color:#5A9AE0">0 €</strong></div>
-    <div class="kpi" style="border-color:rgba(201,153,42,0.3)"><i class="ti ti-currency-euro" style="font-size:12px;color:var(--gold)"></i>Total <strong id="k-tot" style="color:var(--gold)">0 €</strong></div>
+    <div class="kpi" style="border-color:rgba(192,57,43,0.4)"><i class="ti ti-video" style="font-size:11px;color:var(--r2)"></i>Volkane <strong id="k-bv" style="color:var(--r2)">0 €</strong></div>
+    <div class="kpi" style="border-color:rgba(24,95,165,0.4)"><i class="ti ti-video" style="font-size:11px;color:#5A9AE0"></i>Lauptike <strong id="k-bl" style="color:#5A9AE0">0 €</strong></div>
+    <div class="kpi" style="border-color:rgba(192,132,252,0.4)"><i class="ti ti-gift" style="font-size:11px;color:var(--offer-color)"></i>Offertes <strong id="k-bo" style="color:var(--offer-color)">0 €</strong></div>
+    <div class="kpi" style="border-color:rgba(201,153,42,0.3)"><i class="ti ti-currency-euro" style="font-size:11px;color:var(--gold)"></i>Total <strong id="k-tot" style="color:var(--gold)">0 €</strong></div>
   </div>
 </div>
 
@@ -154,28 +221,29 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);min-
     <div class="search-box"><div class="sw"><i class="ti ti-search"></i><input class="si" type="text" placeholder="Rechercher..." id="sb-search"></div></div>
     <div class="sb-sec">
       <div class="sb-lbl">Jour</div>
-      <button class="sb-btn active" data-fd="all"><i class="ti ti-calendar" style="font-size:13px"></i>Tous <span class="cnt" id="c-all">0</span></button>
-      <button class="sb-btn" data-fd="mercredi"><i class="ti ti-calendar-event" style="font-size:13px"></i>Mercredi <span class="cnt" id="c-mer">0</span></button>
-      <button class="sb-btn" data-fd="jeudi"><i class="ti ti-calendar-event" style="font-size:13px"></i>Jeudi <span class="cnt" id="c-jeu">0</span></button>
-      <button class="sb-btn" data-fd="vendredi"><i class="ti ti-calendar-event" style="font-size:13px"></i>Vendredi <span class="cnt" id="c-ven">0</span></button>
-      <button class="sb-btn" data-fd="samedi"><i class="ti ti-calendar-event" style="font-size:13px"></i>Samedi <span class="cnt" id="c-sam">0</span></button>
-      <button class="sb-btn" data-fd="dimanche"><i class="ti ti-calendar-event" style="font-size:13px"></i>Dimanche <span class="cnt" id="c-dim">0</span></button>
+      <button class="sb-btn active" data-fd="all"><i class="ti ti-calendar" style="font-size:12px"></i>Tous <span class="cnt" id="c-all">0</span></button>
+      <button class="sb-btn" data-fd="mercredi"><i class="ti ti-calendar-event" style="font-size:12px"></i>Mercredi <span class="cnt" id="c-mer">0</span></button>
+      <button class="sb-btn" data-fd="jeudi"><i class="ti ti-calendar-event" style="font-size:12px"></i>Jeudi <span class="cnt" id="c-jeu">0</span></button>
+      <button class="sb-btn" data-fd="vendredi"><i class="ti ti-calendar-event" style="font-size:12px"></i>Vendredi <span class="cnt" id="c-ven">0</span></button>
+      <button class="sb-btn" data-fd="samedi"><i class="ti ti-calendar-event" style="font-size:12px"></i>Samedi <span class="cnt" id="c-sam">0</span></button>
+      <button class="sb-btn" data-fd="dimanche"><i class="ti ti-calendar-event" style="font-size:12px"></i>Dimanche <span class="cnt" id="c-dim">0</span></button>
     </div>
     <div class="sb-sec">
       <div class="sb-lbl">Scène</div>
-      <button class="sb-btn" data-fs="all"><i class="ti ti-layout-2" style="font-size:13px"></i>Toutes</button>
-      <button class="sb-btn" data-fs="doma"><span style="width:8px;height:8px;border-radius:2px;background:var(--r);flex-shrink:0"></span>Doma — Volkane</button>
-      <button class="sb-btn" data-fs="selva"><span style="width:8px;height:8px;border-radius:2px;background:var(--blue2);flex-shrink:0"></span>Selva — Lauptike</button>
+      <button class="sb-btn" data-fs="all"><i class="ti ti-layout-2" style="font-size:12px"></i>Toutes</button>
+      <button class="sb-btn" data-fs="doma"><span style="width:7px;height:7px;border-radius:2px;background:var(--r);flex-shrink:0"></span>Doma — Volkane</button>
+      <button class="sb-btn" data-fs="selva"><span style="width:7px;height:7px;border-radius:2px;background:var(--blue2);flex-shrink:0"></span>Selva — Lauptike</button>
     </div>
     <div class="sb-sec">
       <div class="sb-lbl">Statut</div>
-      <button class="sb-btn" data-fst="all"><i class="ti ti-filter" style="font-size:13px"></i>Tous <span class="cnt" id="c-st-all">0</span></button>
+      <button class="sb-btn" data-fst="all"><i class="ti ti-filter" style="font-size:12px"></i>Tous <span class="cnt" id="c-st-all">0</span></button>
       <button class="sb-btn" data-fst="pending"><span class="kdot dam"></span>En attente <span class="cnt" id="c-st-pen">0</span></button>
       <button class="sb-btn" data-fst="validated"><span class="kdot dok"></span>Validés <span class="cnt" id="c-st-ok">0</span></button>
       <button class="sb-btn" data-fst="offered"><span class="kdot dof"></span>Offertes <span class="cnt" id="c-st-off">0</span></button>
       <button class="sb-btn" data-fst="rejected"><span class="kdot dre"></span>Refusés <span class="cnt" id="c-st-rej">0</span></button>
     </div>
-    <div class="sb-total"><div class="sb-total-lbl">Budget vidéo total</div><div class="sb-total-val" id="sb-bud">0 €</div></div>
+    <div class="sb-total budget-paid"><div class="sb-total-lbl">Budget facturé</div><div class="sb-total-val" id="sb-bud">0 €</div></div>
+    <div class="sb-total budget-offered" style="margin-bottom:10px"><div class="sb-total-lbl">Valeur offerte</div><div class="sb-total-val" id="sb-off">0 €</div></div>
     <div class="sb-sec">
       <div class="sb-lbl">Formules Volkane</div>
       <div class="leg-row"><span><span class="leg-dot" style="background:var(--r2)"></span>Full Capta</span><span style="color:var(--txt2)">300 €</span></div>
@@ -191,12 +259,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);min-
     </div>
     <div class="sb-sec">
       <div class="sb-lbl">Commun</div>
-      <div class="leg-row"><span><span class="leg-dot" style="background:var(--gold)"></span>Offerte festival</span><span style="color:var(--ok)">0 €</span></div>
+      <div class="leg-row"><span><span class="leg-dot" style="background:var(--offer-color)"></span>Offerte festival</span><span style="color:var(--ok)">0 €</span></div>
     </div>
   </div>
   <div class="main" id="main"></div>
 </div>
 
+<!-- MODAL -->
 <div class="modal-bg" id="modal" onclick="if(event.target===this)closeModal()">
   <div class="modal" onclick="event.stopPropagation()">
     <div class="modal-top">
@@ -207,14 +276,20 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);min-
       <div><div class="ilbl">Contact</div><div class="ival" id="m-contact"></div></div>
       <div><div class="ilbl">Email</div><div class="ival"><a class="aemail" id="m-email" href="#" style="font-size:12px;color:rgba(201,153,42,0.8)"></a></div></div>
     </div>
-    <div style="margin-bottom:12px">
-      <div class="ilbl" style="margin-bottom:4px">Notes internes</div>
-      <textarea class="ni" id="m-notes" placeholder="Ajouter une note..."></textarea>
+    <hr class="mdiv">
+    <div class="msub"><i class="ti ti-brand-instagram" style="font-size:12px;margin-right:4px"></i>Réseaux sociaux</div>
+    <div class="soc-inputs">
+      <div class="soc-inp-wrap"><i class="ti ti-brand-instagram" style="color:#F06292"></i><input class="soc-inp ig" id="m-ig" placeholder="Instagram URL"></div>
+      <div class="soc-inp-wrap"><i class="ti ti-brand-facebook" style="color:#64B5F6"></i><input class="soc-inp fb" id="m-fb" placeholder="Facebook URL"></div>
+      <div class="soc-inp-wrap"><i class="ti ti-brand-soundcloud" style="color:#FF8A50"></i><input class="soc-inp sc" id="m-sc" placeholder="SoundCloud URL"></div>
     </div>
     <hr class="mdiv">
-    <div class="msub">Choisir une formule</div>
+    <div class="msub"><i class="ti ti-note" style="font-size:12px;margin-right:4px;color:#4ade80"></i>Notes internes</div>
+    <textarea class="ni" id="m-notes" placeholder="Ajouter une note interne..."></textarea>
+    <hr class="mdiv">
+    <div class="msub"><i class="ti ti-video" style="font-size:12px;margin-right:4px"></i>Formule vidéo</div>
     <div id="m-fcards"></div>
-    <div style="font-size:10px;color:var(--txt3);margin-top:6px">Cliquer à nouveau sur une formule sélectionnée pour la retirer</div>
+    <div style="font-size:10px;color:var(--txt3);margin-top:5px">Cliquer à nouveau sur une formule sélectionnée pour la retirer</div>
     <div class="mact">
       <button class="bsec" onclick="closeModal()">Annuler</button>
       <button class="bpri" onclick="saveModal()">&#10003; Confirmer</button>
@@ -229,10 +304,10 @@ var FV=[
   {id:"v2",team:"volkane",label:"Report Vidéo",price:150,desc:"Multi-cam · 5 min · Audio HD · 4K · 30j"}
 ];
 var FL=[
-  {id:"l0",team:"lauptike",label:"Captation complète 4 cam.",price:300,desc:"4 caméras · Full set · Captation complète"},
-  {id:"l1",team:"lauptike",label:"Captation complète 3 cam.",price:275,desc:"3 caméras · Full set · Captation complète"},
-  {id:"l2",team:"lauptike",label:"Captation 2 cam.",price:200,desc:"2 caméras · Captation complète"},
-  {id:"l3",team:"lauptike",label:"Captation 1 cam.",price:150,desc:"1 caméra · Captation complète"}
+  {id:"l0",team:"lauptike",label:"Captation complète 4 cam.",price:300,desc:"4 caméras · Full set"},
+  {id:"l1",team:"lauptike",label:"Captation complète 3 cam.",price:275,desc:"3 caméras · Full set"},
+  {id:"l2",team:"lauptike",label:"Captation 2 cam.",price:200,desc:"2 caméras"},
+  {id:"l3",team:"lauptike",label:"Captation 1 cam.",price:150,desc:"1 caméra"}
 ];
 var FO=[{id:"off",team:"offered",label:"Offerte festival",price:0,desc:"Prestation offerte par l'organisation"}];
 var ALL_F=FV.concat(FL).concat(FO);
@@ -240,76 +315,76 @@ function getFById(id){return ALL_F.find(function(f){return f.id===id;})||null;}
 function getFormules(scene){return scene==="doma"?FV.concat(FO):FL.concat(FO);}
 
 var RAW=[
-  {day:"mercredi",scene:"doma",time:"17h30–19h",name:"Lorké Lorké",contact:"Pierre Kurland / Sylvain Bouysset",email:"lorkelorke.music@gmail.com"},
-  {day:"mercredi",scene:"doma",time:"19h–21h30",name:"Fire Sisters",contact:"",email:""},
-  {day:"mercredi",scene:"doma",time:"19h15–21h30",name:"Digital Freak",contact:"Jeleff Arthur",email:"j.arthur34200@gmail.com"},
-  {day:"mercredi",scene:"doma",time:"21h30–23h30",name:"Fractal Minds",contact:"Toff & Olivier",email:"fractalminds.official@gmail.com"},
-  {day:"mercredi",scene:"doma",time:"23h30–1h",name:"Ad3quat",contact:"Florian Chiramonti",email:"florian.adequat@gmail.com"},
-  {day:"mercredi",scene:"selva",time:"19h10–20h45",name:"Joyti",contact:"Christian",email:"agent@jyotiart.eu"},
-  {day:"mercredi",scene:"selva",time:"20h45–?",name:"Cie Hierra",contact:"",email:""},
-  {day:"mercredi",scene:"selva",time:"21h–22h30",name:"Nomad Frequencies",contact:"Yvan",email:"pessin.y@gmail.com"},
-  {day:"mercredi",scene:"selva",time:"22h40–0h",name:"Alma Deya",contact:"Daniel L. / Noémie",email:"almadeyalive@gmail.com"},
-  {day:"mercredi",scene:"selva",time:"0h–1h30",name:"Yammā Rabbā",contact:"Gabriel Sudres / Félix",email:"Zenit.paris@gmail.com"},
-  {day:"mercredi",scene:"selva",time:"1h30–3h",name:"Trippy Fry",contact:"Guillaume Angelis",email:"angelis.guillaume@gmail.com"},
-  {day:"jeudi",scene:"doma",time:"11h–13h",name:"Nablast",contact:"Nicolas Favre-Marinet",email:"nablast.music@gmail.com"},
-  {day:"jeudi",scene:"doma",time:"13h–14h55",name:"Cirklz",contact:"Edgar Pengrech",email:"Edgar.pengrech@gmail.com"},
-  {day:"jeudi",scene:"doma",time:"14h55–16h50",name:"Annett Gapstream",contact:"Annett Lückebach",email:"isabel@stilvortalent.de"},
-  {day:"jeudi",scene:"doma",time:"16h50–18h45",name:"Fab Massimo",contact:"Fab Massing",email:"fab@lowceiling.com"},
-  {day:"jeudi",scene:"doma",time:"18h45–20h",name:"Immortal Magie",contact:"Christian",email:"agent@jyotiart.eu"},
-  {day:"jeudi",scene:"doma",time:"20h–21h30",name:"Compost Collaps",contact:"Stéphane Bordenet",email:"compostcollaps@gmail.com"},
-  {day:"jeudi",scene:"doma",time:"21h40–23h30",name:"Rise",contact:"Ghislaine Petit",email:"ghiz75@hotmail.com"},
-  {day:"jeudi",scene:"doma",time:"23h30–1h30",name:"Konfusia",contact:"Thalia Hirsch",email:"isabel@stilvortalent.de"},
-  {day:"jeudi",scene:"doma",time:"1h30–3h",name:"Lūv",contact:"Elodie",email:"booking.luvmusic@gmail.com"},
-  {day:"jeudi",scene:"selva",time:"13h–15h",name:"Vera Icona",contact:"Véro",email:"veronique.tiberghien@hotmail.fr"},
-  {day:"jeudi",scene:"selva",time:"15h–16h30",name:"Johan Selva",contact:"",email:"johan.selva.music@gmail.com"},
-  {day:"jeudi",scene:"selva",time:"16h30–18h30",name:"Psygroo & Kulle",contact:"Francesc Ibanez",email:"francesc@ownspiritfestival.org"},
-  {day:"jeudi",scene:"selva",time:"18h30–20h30",name:"Electrypnose Organic",contact:"Vince Rybicki",email:"vincent@electrypnose.com"},
-  {day:"jeudi",scene:"selva",time:"21h30–23h",name:"Rlipopet",contact:"Milan, Gaetan, Lucy, Thomas",email:"trucsentruck@gmail.com"},
-  {day:"jeudi",scene:"selva",time:"23h10–0h30",name:"Opale",contact:"Karine Dreystadt",email:"karine.opale@gmail.com"},
-  {day:"jeudi",scene:"selva",time:"0h30–2h",name:"Nadjeeka",contact:"Nadège Kanash",email:"nadesh.kanash@gmail.com"},
-  {day:"jeudi",scene:"selva",time:"2h–3h30",name:"Chris Tiebo",contact:"Chris Thiébaut",email:"christiebo.booking@gmail.com"},
-  {day:"vendredi",scene:"doma",time:"11h–13h",name:"Alma Deya",contact:"Daniel L. / Noémie",email:"almadeyalive@gmail.com"},
-  {day:"vendredi",scene:"doma",time:"13h–15h",name:"Midilink",contact:"Benedetto Geoffrey",email:"midilink@hotmail.com"},
-  {day:"vendredi",scene:"doma",time:"15h–17h",name:"Nelio",contact:"Lionel Sellier",email:"nelio@free.fr"},
-  {day:"vendredi",scene:"doma",time:"17h–19h",name:"Ewake",contact:"Pablo Ragot",email:"contact.ewake.music@gmail.com"},
-  {day:"vendredi",scene:"doma",time:"20h–21h30",name:"Tetouze",contact:"François Pougnard",email:"tetouze3@gmail.com"},
-  {day:"vendredi",scene:"doma",time:"21h40–1h30",name:"Electrypnose",contact:"Vince Rybicki",email:"vincent@electrypnose.com"},
-  {day:"vendredi",scene:"doma",time:"1h30–2h30",name:"Magimix",contact:"Anaïs Mazeau & Claire Lamy",email:"magimix.dj@gmail.com"},
-  {day:"vendredi",scene:"doma",time:"2h30–4h",name:"Alyshka",contact:"Alice Bourdeix",email:"alice.bourdeix@gmail.com"},
-  {day:"vendredi",scene:"selva",time:"13h–14h",name:"Jalaya",contact:"Alice Bourdeix",email:"alice.bourdeix@gmail.com"},
-  {day:"vendredi",scene:"selva",time:"14h–15h30",name:"Justin Bridouille",contact:"",email:""},
-  {day:"vendredi",scene:"selva",time:"15h30–17h",name:"Willy the Kick",contact:"Willy Peyret-Montagne",email:"Willbab09@gmail.com"},
-  {day:"vendredi",scene:"selva",time:"17h–18h30",name:"Tomtom El Duende",contact:"",email:""},
-  {day:"vendredi",scene:"selva",time:"18h30–20h",name:"Karmâ b2b Max Tenrom",contact:"Amine Rachad",email:"Karmaa.music@gmail.com"},
-  {day:"vendredi",scene:"selva",time:"20h–21h20",name:"Stanimal",contact:"",email:""},
-  {day:"vendredi",scene:"selva",time:"21h35–23h",name:"Heimya",contact:"",email:"heimyacontact@gmail.com"},
-  {day:"vendredi",scene:"selva",time:"23h10–1h05",name:"Maudite Machine",contact:"Michael Sanchez",email:"mauditemachine@gmail.com"},
-  {day:"vendredi",scene:"selva",time:"1h05–3h",name:"Double Glazing",contact:"Clément Delhommais",email:"doubleglazing.music@gmail.com"},
-  {day:"vendredi",scene:"selva",time:"3h–5h",name:"Apaj",contact:"Clément Ducros",email:"apajduc@gmail.com"},
-  {day:"samedi",scene:"doma",time:"11h–13h",name:"Atolla",contact:"",email:"atolla.booking@gmail.com"},
-  {day:"samedi",scene:"doma",time:"13h–16h",name:"K.D.S",contact:"",email:"gautier@okamifestival.com"},
-  {day:"samedi",scene:"doma",time:"16h–19h",name:"D-Nox",contact:"Christian Wedekind",email:"jane@this-saturday.com"},
-  {day:"samedi",scene:"doma",time:"20h–21h20",name:"Elements of Baraka",contact:"Cyril Caillat / Mélaine",email:"metissaprod@gmail.com"},
-  {day:"samedi",scene:"doma",time:"21h30–0h",name:"Yuli Fershtat b2b Electrypnose",contact:"",email:"mail@fb02.freshbooks.com"},
-  {day:"samedi",scene:"doma",time:"0h–2h",name:"Perfect Stranger",contact:"",email:"mail@fb02.freshbooks.com"},
-  {day:"samedi",scene:"selva",time:"13h–15h30",name:"Mino",contact:"Alex Mino",email:"cirquealeatoire@gmail.com"},
-  {day:"samedi",scene:"selva",time:"15h30–17h30",name:"Adil Smaali",contact:"Adil Smaali",email:"metissaprod@gmail.com"},
-  {day:"samedi",scene:"selva",time:"17h30–19h30",name:"Karla Lynch",contact:"Carla Payet",email:"karla@humanmagic.fr"},
-  {day:"samedi",scene:"selva",time:"19h30–22h",name:"Wākhan b2b Ismētra",contact:"Charlie / Julia Uebelacker",email:"otawa.production@gmail.com"},
-  {day:"samedi",scene:"selva",time:"22h20–23h50",name:"Arökem",contact:"Pierre Duhayon",email:"arokem.pierre@gmail.com"},
-  {day:"samedi",scene:"selva",time:"0h30–1h30",name:"Youthie",contact:"Juliette Bourdeix",email:"youthie.records@gmail.com"},
-  {day:"samedi",scene:"selva",time:"1h30–3h",name:"Tom Vaylo & Youthie",contact:"Tom Vallas",email:"tomvaylo@gmail.com"},
-  {day:"dimanche",scene:"doma",time:"11h30–13h30",name:"L'Argonaut",contact:"",email:"jason@okamifestival.com"},
-  {day:"dimanche",scene:"doma",time:"13h30–15h30",name:"Sahra Bass",contact:"Janine Sahra Lakoud",email:"sahrabassmusic@gmail.com"},
-  {day:"dimanche",scene:"doma",time:"15h30–18h",name:"Frida Darko",contact:"",email:"chris@stilvortalent.de"},
-  {day:"dimanche",scene:"doma",time:"18h–20h30",name:"Yuli Fershtat",contact:"",email:"mail@fb02.freshbooks.com"},
-  {day:"dimanche",scene:"selva",time:"20h30–21h30",name:"DJnee",contact:"Jenny Fassel",email:"djnee23@gmail.com"},
-  {day:"dimanche",scene:"selva",time:"21h30–22h30",name:"Mécou Yenski",contact:"",email:"cyril.brard@gmail.com"},
-  {day:"dimanche",scene:"selva",time:"22h30–23h30",name:"You & Me",contact:"Benoit Labenère",email:"benoit.labenere@gmail.com"},
-  {day:"dimanche",scene:"selva",time:"23h30–0h30",name:"Glitter Mob & XXL Folley",contact:"Al & Fab",email:"fabmbox@gmail.com"}
+  {day:"mercredi",scene:"doma",time:"17h30–19h",name:"Lorké Lorké",contact:"Pierre Kurland / Sylvain Bouysset",email:"lorkelorke.music@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"mercredi",scene:"doma",time:"19h–21h30",name:"Fire Sisters",contact:"",email:"",ig:"",fb:"",sc:"",notes:""},
+  {day:"mercredi",scene:"doma",time:"19h15–21h30",name:"Digital Freak",contact:"Jeleff Arthur",email:"j.arthur34200@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"mercredi",scene:"doma",time:"21h30–23h30",name:"Fractal Minds",contact:"Toff & Olivier",email:"fractalminds.official@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"mercredi",scene:"doma",time:"23h30–1h",name:"Ad3quat",contact:"Florian Chiramonti",email:"florian.adequat@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"mercredi",scene:"selva",time:"19h10–20h45",name:"Joyti",contact:"Christian",email:"agent@jyotiart.eu",ig:"",fb:"",sc:"",notes:""},
+  {day:"mercredi",scene:"selva",time:"20h45–?",name:"Cie Hierra",contact:"",email:"",ig:"",fb:"",sc:"",notes:""},
+  {day:"mercredi",scene:"selva",time:"21h–22h30",name:"Nomad Frequencies",contact:"Yvan",email:"pessin.y@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"mercredi",scene:"selva",time:"22h40–0h",name:"Alma Deya",contact:"Daniel L. / Noémie",email:"almadeyalive@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"mercredi",scene:"selva",time:"0h–1h30",name:"Yammā Rabbā",contact:"Gabriel Sudres / Félix",email:"Zenit.paris@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"mercredi",scene:"selva",time:"1h30–3h",name:"Trippy Fry",contact:"Guillaume Angelis",email:"angelis.guillaume@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"jeudi",scene:"doma",time:"11h–13h",name:"Nablast",contact:"Nicolas Favre-Marinet",email:"nablast.music@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"jeudi",scene:"doma",time:"13h–14h55",name:"Cirklz",contact:"Edgar Pengrech",email:"Edgar.pengrech@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"jeudi",scene:"doma",time:"14h55–16h50",name:"Annett Gapstream",contact:"Annett Lückebach",email:"isabel@stilvortalent.de",ig:"",fb:"",sc:"",notes:""},
+  {day:"jeudi",scene:"doma",time:"16h50–18h45",name:"Fab Massimo",contact:"Fab Massing",email:"fab@lowceiling.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"jeudi",scene:"doma",time:"18h45–20h",name:"Immortal Magie",contact:"Christian",email:"agent@jyotiart.eu",ig:"",fb:"",sc:"",notes:""},
+  {day:"jeudi",scene:"doma",time:"20h–21h30",name:"Compost Collaps",contact:"Stéphane Bordenet",email:"compostcollaps@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"jeudi",scene:"doma",time:"21h40–23h30",name:"Rise",contact:"Ghislaine Petit",email:"ghiz75@hotmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"jeudi",scene:"doma",time:"23h30–1h30",name:"Konfusia",contact:"Thalia Hirsch",email:"isabel@stilvortalent.de",ig:"",fb:"",sc:"",notes:""},
+  {day:"jeudi",scene:"doma",time:"1h30–3h",name:"Lūv",contact:"Elodie",email:"booking.luvmusic@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"jeudi",scene:"selva",time:"13h–15h",name:"Vera Icona",contact:"Véro",email:"veronique.tiberghien@hotmail.fr",ig:"",fb:"",sc:"",notes:""},
+  {day:"jeudi",scene:"selva",time:"15h–16h30",name:"Johan Selva",contact:"",email:"johan.selva.music@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"jeudi",scene:"selva",time:"16h30–18h30",name:"Psygroo & Kulle",contact:"Francesc Ibanez",email:"francesc@ownspiritfestival.org",ig:"",fb:"",sc:"",notes:""},
+  {day:"jeudi",scene:"selva",time:"18h30–20h30",name:"Electrypnose Organic",contact:"Vince Rybicki",email:"vincent@electrypnose.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"jeudi",scene:"selva",time:"21h30–23h",name:"Rlipopet",contact:"Milan, Gaetan, Lucy, Thomas",email:"trucsentruck@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"jeudi",scene:"selva",time:"23h10–0h30",name:"Opale",contact:"Karine Dreystadt",email:"karine.opale@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"jeudi",scene:"selva",time:"0h30–2h",name:"Nadjeeka",contact:"Nadège Kanash",email:"nadesh.kanash@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"jeudi",scene:"selva",time:"2h–3h30",name:"Chris Tiebo",contact:"Chris Thiébaut",email:"christiebo.booking@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"vendredi",scene:"doma",time:"11h–13h",name:"Alma Deya",contact:"Daniel L. / Noémie",email:"almadeyalive@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"vendredi",scene:"doma",time:"13h–15h",name:"Midilink",contact:"Benedetto Geoffrey",email:"midilink@hotmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"vendredi",scene:"doma",time:"15h–17h",name:"Nelio",contact:"Lionel Sellier",email:"nelio@free.fr",ig:"",fb:"",sc:"",notes:""},
+  {day:"vendredi",scene:"doma",time:"17h–19h",name:"Ewake",contact:"Pablo Ragot",email:"contact.ewake.music@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"vendredi",scene:"doma",time:"20h–21h30",name:"Tetouze",contact:"François Pougnard",email:"tetouze3@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"vendredi",scene:"doma",time:"21h40–1h30",name:"Electrypnose",contact:"Vince Rybicki",email:"vincent@electrypnose.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"vendredi",scene:"doma",time:"1h30–2h30",name:"Magimix",contact:"Anaïs Mazeau & Claire Lamy",email:"magimix.dj@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"vendredi",scene:"doma",time:"2h30–4h",name:"Alyshka",contact:"Alice Bourdeix",email:"alice.bourdeix@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"vendredi",scene:"selva",time:"13h–14h",name:"Jalaya",contact:"Alice Bourdeix",email:"alice.bourdeix@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"vendredi",scene:"selva",time:"14h–15h30",name:"Justin Bridouille",contact:"",email:"",ig:"",fb:"",sc:"",notes:""},
+  {day:"vendredi",scene:"selva",time:"15h30–17h",name:"Willy the Kick",contact:"Willy Peyret-Montagne",email:"Willbab09@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"vendredi",scene:"selva",time:"17h–18h30",name:"Tomtom El Duende",contact:"",email:"",ig:"",fb:"",sc:"",notes:""},
+  {day:"vendredi",scene:"selva",time:"18h30–20h",name:"Karmâ b2b Max Tenrom",contact:"Amine Rachad",email:"Karmaa.music@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"vendredi",scene:"selva",time:"20h–21h20",name:"Stanimal",contact:"",email:"",ig:"",fb:"",sc:"",notes:""},
+  {day:"vendredi",scene:"selva",time:"21h35–23h",name:"Heimya",contact:"",email:"heimyacontact@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"vendredi",scene:"selva",time:"23h10–1h05",name:"Maudite Machine",contact:"Michael Sanchez",email:"mauditemachine@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"vendredi",scene:"selva",time:"1h05–3h",name:"Double Glazing",contact:"Clément Delhommais",email:"doubleglazing.music@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"vendredi",scene:"selva",time:"3h–5h",name:"Apaj",contact:"Clément Ducros",email:"apajduc@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"samedi",scene:"doma",time:"11h–13h",name:"Atolla",contact:"",email:"atolla.booking@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"samedi",scene:"doma",time:"13h–16h",name:"K.D.S",contact:"",email:"gautier@okamifestival.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"samedi",scene:"doma",time:"16h–19h",name:"D-Nox",contact:"Christian Wedekind",email:"jane@this-saturday.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"samedi",scene:"doma",time:"20h–21h20",name:"Elements of Baraka",contact:"Cyril Caillat / Mélaine",email:"metissaprod@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"samedi",scene:"doma",time:"21h30–0h",name:"Yuli Fershtat b2b Electrypnose",contact:"",email:"mail@fb02.freshbooks.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"samedi",scene:"doma",time:"0h–2h",name:"Perfect Stranger",contact:"",email:"mail@fb02.freshbooks.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"samedi",scene:"selva",time:"13h–15h30",name:"Mino",contact:"Alex Mino",email:"cirquealeatoire@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"samedi",scene:"selva",time:"15h30–17h30",name:"Adil Smaali",contact:"Adil Smaali",email:"metissaprod@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"samedi",scene:"selva",time:"17h30–19h30",name:"Karla Lynch",contact:"Carla Payet",email:"karla@humanmagic.fr",ig:"",fb:"",sc:"",notes:""},
+  {day:"samedi",scene:"selva",time:"19h30–22h",name:"Wākhan b2b Ismētra",contact:"Charlie / Julia Uebelacker",email:"otawa.production@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"samedi",scene:"selva",time:"22h20–23h50",name:"Arökem",contact:"Pierre Duhayon",email:"arokem.pierre@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"samedi",scene:"selva",time:"0h30–1h30",name:"Youthie",contact:"Juliette Bourdeix",email:"youthie.records@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"samedi",scene:"selva",time:"1h30–3h",name:"Tom Vaylo & Youthie",contact:"Tom Vallas",email:"tomvaylo@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"dimanche",scene:"doma",time:"11h30–13h30",name:"L'Argonaut",contact:"",email:"jason@okamifestival.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"dimanche",scene:"doma",time:"13h30–15h30",name:"Sahra Bass",contact:"Janine Sahra Lakoud",email:"sahrabassmusic@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"dimanche",scene:"doma",time:"15h30–18h",name:"Frida Darko",contact:"",email:"chris@stilvortalent.de",ig:"",fb:"",sc:"",notes:""},
+  {day:"dimanche",scene:"doma",time:"18h–20h30",name:"Yuli Fershtat",contact:"",email:"mail@fb02.freshbooks.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"dimanche",scene:"selva",time:"20h30–21h30",name:"DJnee",contact:"Jenny Fassel",email:"djnee23@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"dimanche",scene:"selva",time:"21h30–22h30",name:"Mécou Yenski",contact:"",email:"cyril.brard@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"dimanche",scene:"selva",time:"22h30–23h30",name:"You & Me",contact:"Benoit Labenère",email:"benoit.labenere@gmail.com",ig:"",fb:"",sc:"",notes:""},
+  {day:"dimanche",scene:"selva",time:"23h30–0h30",name:"Glitter Mob & XXL Folley",contact:"Al & Fab",email:"fabmbox@gmail.com",ig:"",fb:"",sc:"",notes:""}
 ];
 
-var state=RAW.map(function(a,i){return Object.assign({},a,{id:i,status:"pending",formule:null,notes:""});});
+var state=RAW.map(function(a,i){return Object.assign({},a,{id:i,status:"pending",formule:null});});
 var fDay="all",fScene="all",fStatus="all",fSearch="";
 var mId=null,mTmp=null,mScene=null;
 var DAYS=["mercredi","jeudi","vendredi","samedi","dimanche"];
@@ -319,7 +394,7 @@ function rowCls(s){return s==="validated"?"sv":s==="rejected"?"sj":s==="offered"
 function selCls(s){return s==="validated"?"cv":s==="rejected"?"cr":s==="offered"?"co":"cp";}
 
 function updateKPIs(){
-  var ok=0,pen=0,rej=0,off=0,bv=0,bl=0;
+  var ok=0,pen=0,rej=0,off=0,bv=0,bl=0,bo=0;
   var dc={mercredi:0,jeudi:0,vendredi:0,samedi:0,dimanche:0};
   state.forEach(function(a){
     dc[a.day]++;
@@ -327,7 +402,17 @@ function updateKPIs(){
     else if(a.status==="rejected")rej++;
     else if(a.status==="offered")off++;
     else pen++;
-    if(a.formule){var f=getFById(a.formule);if(f&&f.team==="volkane")bv+=f.price;else if(f&&f.team==="lauptike")bl+=f.price;}
+    if(a.formule){
+      var f=getFById(a.formule);
+      if(f){
+        if(f.team==="volkane")bv+=f.price;
+        else if(f.team==="lauptike")bl+=f.price;
+        else if(f.team==="offered"){
+          // valeur offerte = tarif de la formule équivalente (on estime 300€ par défaut)
+          bo+=300;
+        }
+      }
+    }
   });
   document.getElementById("k-ok").textContent=ok;
   document.getElementById("k-pend").textContent=pen;
@@ -335,8 +420,10 @@ function updateKPIs(){
   document.getElementById("k-off").textContent=off;
   document.getElementById("k-bv").textContent=bv+" €";
   document.getElementById("k-bl").textContent=bl+" €";
+  document.getElementById("k-bo").textContent=bo+" €";
   document.getElementById("k-tot").textContent=(bv+bl)+" €";
   document.getElementById("sb-bud").textContent=(bv+bl)+" €";
+  document.getElementById("sb-off").textContent=bo+" €";
   document.getElementById("c-all").textContent=state.length;
   document.getElementById("c-mer").textContent=dc.mercredi;
   document.getElementById("c-jeu").textContent=dc.jeudi;
@@ -382,33 +469,51 @@ function renderMain(){
   updateKPIs();
 }
 
+function esc(s){return s?s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"):""}
+
 function renderScene(scene,arts){
   var isDoma=scene==="doma";
   var rows=arts.map(function(a){
     var rc=rowCls(a.status),sc2=selCls(a.status);
     var pill=isDoma?'<span class="spill sp-d">Doma</span>':'<span class="spill sp-s">Selva</span>';
     var fHtml='<span class="fnone">— Aucune</span>';
-    if(a.formule){var f=getFById(a.formule);if(f){var tc=f.team==="offered"?"fchosen-o":f.team==="volkane"?"fchosen-v":"fchosen-l";fHtml='<span class="'+tc+'">'+f.label+'</span>'+(f.price>0?'<br><span class="fprice">'+f.price+' €</span>':'<br><span style="font-size:11px;color:var(--ok)">Offerte</span>');}}
+    if(a.formule){
+      var f=getFById(a.formule);
+      if(f){
+        var tc=f.team==="offered"?"fchosen-o":f.team==="volkane"?"fchosen-v":"fchosen-l";
+        fHtml='<span class="'+tc+'">'+esc(f.label)+'</span>'+(f.price>0?'<br><span class="fprice">'+f.price+' €</span>':'<br><span style="font-size:10px;color:var(--offer-color)">Offerte 🎁</span>');
+      }
+    }
+    // contact line
     var cHtml='';
-    if(a.contact||a.email){cHtml='<div class="acontact">'+(a.contact||'')+(a.contact&&a.email?' · ':'')+( a.email?'<a class="aemail" href="mailto:'+a.email+'">'+a.email+'</a>':'')+'</div>';}
-    var nHtml=a.notes?'<div class="anote">'+a.notes+'</div>':'';
+    if(a.contact||a.email){
+      cHtml='<div class="acontact">'+(a.contact?esc(a.contact):'')+(a.contact&&a.email?' · ':'')+(a.email?'<a class="aemail" href="mailto:'+esc(a.email)+'">'+esc(a.email)+'</a>':'')+'</div>';
+    }
+    // social links
+    var socHtml='';
+    if(a.ig||a.fb||a.sc){
+      socHtml='<div class="asocial">';
+      if(a.ig)socHtml+='<a class="soc-ig" href="'+esc(a.ig)+'" target="_blank" rel="noopener"><i class="ti ti-brand-instagram" style="font-size:10px"></i>IG</a>';
+      if(a.fb)socHtml+='<a class="soc-fb" href="'+esc(a.fb)+'" target="_blank" rel="noopener"><i class="ti ti-brand-facebook" style="font-size:10px"></i>FB</a>';
+      if(a.sc)socHtml+='<a class="soc-sc" href="'+esc(a.sc)+'" target="_blank" rel="noopener"><i class="ti ti-brand-soundcloud" style="font-size:10px"></i>SC</a>';
+      socHtml+='</div>';
+    }
+    var nHtml=a.notes?'<div class="anote">'+esc(a.notes)+'</div>':'';
     return '<div class="arow '+rc+'">'
       +'<div class="cell tc">'+a.time+'</div>'
       +'<div class="cell">'+pill+'</div>'
-      +'<div class="cell"><div class="aname" onclick="openModal('+a.id+')">'+a.name+'</div>'+cHtml+nHtml+'</div>'
+      +'<div class="cell" style="min-width:0"><div class="aname" onclick="openModal('+a.id+')">'+esc(a.name)+'</div>'+cHtml+socHtml+nHtml+'</div>'
       +'<div class="cell"><select class="stsel '+sc2+'" data-id="'+a.id+'" data-type="status">'
         +'<option value="pending"'+(a.status==="pending"?" selected":"")+'>⏳ En attente</option>'
         +'<option value="validated"'+(a.status==="validated"?" selected":"")+'>✅ Validé</option>'
         +'<option value="offered"'+(a.status==="offered"?" selected":"")+'>🎁 Offerte festival</option>'
         +'<option value="rejected"'+(a.status==="rejected"?" selected":"")+'>❌ Refusé</option>'
       +'</select></div>'
-      +'<div class="cell" onclick="openModal('+a.id+')" style="cursor:pointer">'+fHtml+'</div>'
-      +'<div class="cell"><button class="fbtn" onclick="openModal('+a.id+')">Choisir</button></div>'
+      +'<div class="cell" onclick="openModal('+a.id+')" style="cursor:pointer;min-width:0">'+fHtml+'</div>'
+      +'<div class="cell-action"><button class="fbtn" onclick="openModal('+a.id+')">Choisir</button></div>'
     +'</div>';
   }).join("");
-  var teamName=isDoma?"Volkane × ArdbPhoto":"Lauptike Production";
-  var badgeCls=isDoma?"sc-badge-d":"sc-badge-s";
-  return '<div class="scene-block"><div class="scene-hdr"><span style="font-size:12px;font-weight:500;color:var(--txt2)">'+(isDoma?"Doma":"Selva")+'</span><span class="sc-badge '+badgeCls+'">'+teamName+'</span></div>'
+  return '<div class="scene-block"><div class="scene-hdr"><span style="font-size:12px;font-weight:500;color:var(--txt2)">'+(isDoma?"Doma":"Selva")+'</span><span class="sc-badge '+(isDoma?"sc-badge-d":"sc-badge-s")+'">'+(isDoma?"Volkane × ArdbPhoto":"Lauptike Production")+'</span></div>'
     +'<div class="tbl"><div class="tbl-head"><div class="th">Horaire</div><div class="th">Scène</div><div class="th">Artiste</div><div class="th">Statut</div><div class="th">Formule vidéo</div><div class="th">Action</div></div>'+rows+'</div></div>';
 }
 
@@ -433,6 +538,9 @@ function openModal(id){
   document.getElementById("m-contact").textContent=a.contact||"—";
   var ea=document.getElementById("m-email");
   ea.textContent=a.email||"—";ea.href=a.email?"mailto:"+a.email:"#";
+  document.getElementById("m-ig").value=a.ig||"";
+  document.getElementById("m-fb").value=a.fb||"";
+  document.getElementById("m-sc").value=a.sc||"";
   document.getElementById("m-notes").value=a.notes||"";
   renderFCards();
   document.getElementById("modal").classList.add("open");
@@ -448,18 +556,18 @@ function renderFCards(){
     var sc=isSel?(isDoma?"sd":"sl"):"";
     h+='<div class="fcard '+sc+'" onclick="selF(\''+f.id+'\')">'
       +'<div class="fc-team">'+(isDoma?"Volkane":"Lauptike")+'</div>'
-      +'<div class="fc-name">'+f.label+'</div>'
+      +'<div class="fc-name">'+esc(f.label)+'</div>'
       +'<div class="fc-p">'+f.price+' €</div>'
-      +'<div class="fc-d">'+f.desc+'</div>'
+      +'<div class="fc-d">'+esc(f.desc)+'</div>'
       +'</div>';
   });
   h+='</div>';
   var o=FO[0];var isSO=mTmp===o.id;
-  h+='<div class="fcard '+(isSO?"sof":"")+'" onclick="selF(\'off\')" style="margin-top:8px;display:flex;align-items:center;gap:12px;text-align:left;padding:10px 14px;border-style:'+(isSO?"solid":"dashed")+';border-color:'+(isSO?"var(--gold)":"rgba(201,153,42,0.35)")+'">'
-    +'<span style="font-size:20px;color:'+(isSO?"var(--gold2)":"var(--gold)")+'">🎁</span>'
-    +'<div style="flex:1"><div class="fc-name" style="text-align:left;color:'+(isSO?"var(--gold2)":"var(--txt2)")+'">Offerte festival</div>'
+  h+='<div class="fcard '+(isSO?"sof":"")+'" onclick="selF(\'off\')" style="margin-top:8px;display:flex;align-items:center;gap:12px;text-align:left;padding:10px 14px;border-style:'+(isSO?"solid":"dashed")+';border-color:'+(isSO?"var(--offer-color)":"rgba(192,132,252,0.3)")+'">'
+    +'<span style="font-size:22px">🎁</span>'
+    +'<div style="flex:1"><div class="fc-name" style="text-align:left;color:'+(isSO?"var(--offer-color)":"var(--txt2)")+'">Offerte festival</div>'
     +'<div class="fc-d" style="text-align:left">Prestation offerte par l\'organisation</div></div>'
-    +'<div class="fc-p" style="font-size:15px;color:var(--ok)">GRATUIT</div></div>';
+    +'<div class="fc-p" style="font-size:14px;color:#4ade80">GRATUIT</div></div>';
   document.getElementById("m-fcards").innerHTML=h;
 }
 
@@ -469,6 +577,9 @@ function saveModal(){
   var a=state.find(function(x){return x.id===mId;});
   a.formule=mTmp;
   a.notes=document.getElementById("m-notes").value.trim();
+  a.ig=document.getElementById("m-ig").value.trim();
+  a.fb=document.getElementById("m-fb").value.trim();
+  a.sc=document.getElementById("m-sc").value.trim();
   closeModal();renderMain();
 }
 function closeModal(){document.getElementById("modal").classList.remove("open");mId=null;}
